@@ -27,7 +27,7 @@ header {
     gap: 24px;
 }
 
-.iniciarJogo, .addPalavra{
+.iniciarJogo, .addPalavra {
     display: flex;
     justify-content: space-around;
     width: 300px;
