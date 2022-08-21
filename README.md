@@ -31,4 +31,3 @@
 | ![pagina-inicial](/assets/readme/Jogo%20-%201%20Smartphone.png)   | ![pagina-inicial](/assets/readme/Jogo%20-%202%20Smartphone.png) | 
 |-------------------------------------------------------------------|-----------------------------------------------------------------|
 | ![pagina-inicial](/assets/readme/Jogo%20-%203%20Smartphone.png)   | ![pagina-inicial](/assets/readme/Jogo-%204%20Smartphone.png)    |
-
