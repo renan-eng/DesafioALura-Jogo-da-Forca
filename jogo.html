@@ -6,24 +6,25 @@
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
+
     <title>Jogo da Forca</title>
 </head>
 <body>
 <header>
     <img src="/assets/img/Vector.svg" alt="logo Alura">
 </header>
-<main>
-    <div class="jogo">
+<main class="main-jogo">
+    <div class="jogo" id="jogo">
         <ul id="palavra">
 
         </ul>
     </div>
     <div class="botoes-jogo">
-        <input onclick="location.href = `jogo.html`" type="button" value="Novo jogo">
-        <input onclick="location.href = `index.html`" type="button" value="Desistir">
+        <input class="novoJogo" onclick="location.href = `jogo.html`" type="button" value="Novo jogo">
+        <input class="desistir" onclick="location.href = `index.html`" type="button" value="Desistir">
     </div>
 </main>
 
+<script src="main.js"></script>
 </body>
 </html>
