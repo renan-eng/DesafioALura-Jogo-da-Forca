@@ -1,0 +1,81 @@
+/************** Variables ****************/
+:root {
+    --dark-blue: #0A3871;
+    --gray-400: #495057;
+    --white: #ffffff;
+    --gray-botao: #D8DFE8;
+    --dark-blue-botao: #0a3062
+}
+
+body {
+    font-family: Inter, sans-serif;
+}
+/********** Header logo position *************/
+header {
+    margin: 30px 30px;
+}
+/*********************************************/
+
+/*********** Botões index.html ***************/
+
+.botoes-index {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    gap: 24px;
+}
+
+.iniciarJogo, .addPalavra{
+    display: flex;
+    justify-content: space-around;
+    width: 300px;
+    height: 105px;
+    flex-direction: column;
+    padding: 24px;
+    align-items: center;
+    border-radius: 24px;
+    transition: 400ms;
+}
+
+.iniciarJogo{
+    background: var(--dark-blue);
+    color: white;
+    border: none;
+
+}
+
+.addPalavra {
+    border: 1px solid var(--dark-blue);
+    color: var(--dark-blue);
+}
+
+input[type=button]:first-child:hover {
+    cursor: pointer;
+    background: var(--dark-blue-botao);
+    color: white;
+}
+
+input[type=button]:last-child:hover {
+    cursor: pointer;
+}
+
+/***********************************************/
+
+/****************** Input do usuário ********************/
+ul {
+    display: flex;
+    flex-direction: row;
+    height:150px;
+    gap: 24px;
+}
+
+
+li {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+
+}
+/***********************************************/
