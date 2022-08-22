@@ -2,15 +2,21 @@ let letraAtual = 1;
 const palavraChave = "desistir"; // this can be obtained dynamically
 let palavra = document.getElementById("palavra");
 let jogo = document.getElementById("jogo");
+let p = document.getElementById('msgErro');
+let imagem = document.getElementById("img");
+let caminhoImg = ["/assets/img/segundo_erro.png", "/assets/img/terceiro_erro.png", "/assets/img/quarto_erro.png", "/assets/img/quinto_erro.png", "/assets/img/sexto_erro.png"];
+let letraSegredo = document.getElementsByClassName('letra-li');
 const regex = /^[a-záàâãéèêíïóôõöúçñ ]+$/i;
 let letraDigitada = "";
 let ganhou = true;
+let errou = 0;
+
 
 
 // Função executada ao carregar a página
 window.addEventListener("load", carregaPagina);
 // Função executada após usuário digitar:
-window.addEventListener("keydown", teclaPressionada);
+window.addEventListener("keyup", teclaPressionada);
 
 function carregaPagina() {
     console.log('oi') //primeiro comando a ser carregado ao carregar a pagina.
@@ -35,21 +41,19 @@ function novaLetra(e) {
     return li;
 }
 
-let errou = 0;
-
 
 function teclaPressionada(e) {
-    const letraSegredo = document.getElementsByClassName('letra-li');
-    let p = document.createElement('p');
+    //let letraSegredo = document.getElementsByClassName('letra-li');
+    let criaP = document.createElement('p');
+
     e.preventDefault();
-    let x;
-    //regex.test(e.key) ? letraDigitada = e.key : letraDigitada = 'invalido';
 
     if (regex.test(e.key)) {
         // Verifica se a tecla pressionada não é tecla especial
-        if (   e.keyCode === 20 /* Caps lock */
+        if (e.keyCode === 20 /* Caps lock */
             || e.keyCode === 16 /* Shift */
-            || e.keyCode === 9 /* Tab */
+            || e.keyCode === 9 /* Shift */
+            || e.keyCode === 8 /* Tab */
             || e.keyCode === 27 /* Escape Key */
             || e.keyCode === 17 /* Control Key */
             || e.keyCode === 91 /* Windows Command Key */
@@ -62,34 +66,51 @@ function teclaPressionada(e) {
             || (e.keyCode >= 33 && e.keyCode <= 34) /*Page Down, Page Up */
             || (e.keyCode >= 112 && e.keyCode <= 123) /* F1 - F12 */
             || (e.keyCode >= 144 && e.keyCode <= 145) /* Num Lock, Scroll Lock */
-            || e.key === 'Dead'){
+            || e.key === 'Dead') {
             return false;
-        }
-        else letraDigitada = e.key;
+        } else letraDigitada = e.key;
     }
 
     //while (ganhou) {
-    for (let i = 0; i <= palavraChave.length; i++) {
+    for (let i = 0; i <= palavraChave.length-1; i++) {
         //console.log(letraSegredo[i].innerHTML);
         //x = letraSegredo[i].innerHTML
-        if (true) {
+
+        if (letraSegredo[i].innerHTML === '') {
             if (letraDigitada === palavraChave[i]) {
                 letraSegredo[i].innerHTML = letraDigitada;
-                letraSegredo[i].style.removeProperty('border-bottom')
-            } else if (letraDigitada !== 'Control' && letraDigitada !== 'Alt') {
-                errou = errou + 1;
-                p.innerHTML = letraDigitada;
-                p.className = 'msgErro';
-                jogo.appendChild(p);
+            } else if (letraDigitada !== palavraChave[i]) {
+                errou++;
+                console.log(`Errou = ${errou}`);
+                criaP.innerHTML = letraDigitada;
+                criaP.className = 'msgErro';
+                jogo.appendChild(criaP);
+                switch (errou) {
+                    case 8:
+                        imagem.src = caminhoImg[0];
+                        break;
+                    case 16:
+                        imagem.src = caminhoImg[1];
+                        break;
+                    case 24:
+                        imagem.src = caminhoImg[2];
+                        break;
+                    case 32:
+                        imagem.src = caminhoImg[3];
+                        break;
+                    case 40:
+                        imagem.src = caminhoImg[4];
+                        break;
+                }
             }
         }
-        if (errou => 3) {
-            ganhou = false;
-        }
+
+
+
     }
 
     //}
-    console.log(e.keyCode); // letraDigitada resultados: Letra ou Dead (se for acento) ou invalido (se numero ou teclas modificadoras
+    console.log(`e.key = ${e.key}`); // letraDigitada resultados: Letra ou Dead (se for acento) ou invalido (se numero ou teclas modificadoras
     //console.log(letraSegredo[1].innerHTML);
 
 }

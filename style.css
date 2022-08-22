@@ -68,7 +68,7 @@ input[type=button]:last-child:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 180px;
+    gap: 10px;
 }
 
 .botoes-jogo {
@@ -100,8 +100,8 @@ ul {
     padding-left: 0;
     display: flex;
     flex-direction: row;
-    height:150px;
-    width: 300px;
+    height:70px;
+    width: 400px;
     align-items: flex-end;
     justify-content: space-between;
     gap: 10px;
@@ -123,5 +123,10 @@ li {
     text-align: center;
     margin-top: 24px;
     margin-left: 5px;
+}
+
+.img {
+    height: auto;
+    width: 294px;
 }
 /***********************************************/
