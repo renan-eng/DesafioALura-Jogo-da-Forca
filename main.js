@@ -1,12 +1,12 @@
 let letraAtual = 1;
-const palavraChave = "desistir"; // this can be obtained dynamically
+let palavraChave = "";
 let palavra = document.getElementById("palavra");
 let jogo = document.getElementById("jogo");
 let p = document.getElementById('msgErro');
 let imagem = document.getElementById("img");
 let caminhoImg = ["segundo_erro.png", "terceiro_erro.png", "quarto_erro.png", "quinto_erro.png", "sexto_erro.png"];
 let letraSegredo = document.getElementsByClassName('letra-li');
-const regex = /^[a-záàâãéèêíïóôõöúçñ ]+$/i;
+const regex = /^[a-záàâãéèêíïóôõöúçñ]+$/i;
 let letraDigitada = "";
 let salvaLetraDigitada = [];
 let ganhou = true;
