@@ -18,9 +18,14 @@ window.addEventListener("load", carregaPagina);
 window.addEventListener("keyup", teclaPressionada);
 
 function carregaPagina() {
-    console.log('oi') //primeiro comando a ser carregado ao carregar a pagina.
-    /*Testando*/
-    criarLista();
+    // Retorna uma palavra aleatória da API do dicionário aberto
+     fetch('https://api.dicionario-aberto.net/random')
+         .then(res=>res.json())
+         .then((data) => {
+             console.log(data.word)
+             palavraChave = data.word;
+             criarLista();
+         })
 }
 
 function criarLista() {
