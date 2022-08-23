@@ -43,42 +43,37 @@ function novaLetra(e) {
     return li;
 }
 
-
 function teclaPressionada(e) {
     let criaP = document.createElement('p');
 
-    e.preventDefault();
+    //e.preventDefault();
 
-    if (regex.test(e.key)) {
-        // Verifica se a tecla pressionada não é tecla especial
-        if (e.keyCode === 20 /* Caps lock */
-            || e.keyCode === 16 /* Shift */
-            || e.keyCode === 9 /* Shift */
-            || e.keyCode === 8 /* Tab */
-            || e.keyCode === 27 /* Escape Key */
-            || e.keyCode === 17 /* Control Key */
-            || e.keyCode === 91 /* Windows Command Key */
-            || e.keyCode === 19 /* Pause Break */
-            || e.keyCode === 18 /* Alt Key */
-            || e.keyCode === 93 /* Right Click Point Key */
-            || (e.keyCode >= 35 && e.keyCode <= 40) /* Home, End, Arrow Keys */
-            || e.keyCode === 45 /* Insert Key */
-            || e.keyCode === 46 /* Delete Key */
-            || (e.keyCode >= 33 && e.keyCode <= 34) /*Page Down, Page Up */
-            || (e.keyCode >= 112 && e.keyCode <= 123) /* F1 - F12 */
-            || (e.keyCode >= 144 && e.keyCode <= 145) /* Num Lock, Scroll Lock */
-            || e.key === 'Dead') {
-            return false;
-        } else letraDigitada = e.key;
-    }
-
+    // if (regex.test(e.key)) {
+    //     // Verifica se a tecla pressionada não é tecla especial
+    //     if (e.keyCode === 20 /* Caps lock */
+    //         || e.keyCode === 16 /* Shift */
+    //         || e.keyCode === 9 /* Shift */
+    //         || e.keyCode === 8 /* Tab */
+    //         || e.keyCode === 27 /* Escape Key */
+    //         || e.keyCode === 17 /* Control Key */
+    //         || e.keyCode === 91 /* Windows Command Key */
+    //         || e.keyCode === 19 /* Pause Break */
+    //         || e.keyCode === 18 /* Alt Key */
+    //         || e.keyCode === 93 /* Right Click Point Key */
+    //         || (e.keyCode >= 35 && e.keyCode <= 40) /* Home, End, Arrow Keys */
+    //         || e.keyCode === 45 /* Insert Key */
+    //         || e.keyCode === 46 /* Delete Key */
+    //         || (e.keyCode >= 33 && e.keyCode <= 34) /*Page Down, Page Up */
+    //         || (e.keyCode >= 112 && e.keyCode <= 123) /* F1 - F12 */
+    //         || (e.keyCode >= 144 && e.keyCode <= 145) )/* Num Lock, Scroll Lock */
+    //         {
+    //         return false;
+    //     } else letraDigitada = e.key;
+    // }
+    letraDigitada = e.key;
     salvaLetraDigitada.push(letraDigitada);
 
-    //while (ganhou) {
     for (let i = 0; i <= palavraChave.length - 1; i++) {
-        //console.log(letraSegredo[i].innerHTML);
-        //x = letraSegredo[i].innerHTML
-
         if (letraSegredo[i].innerHTML === '') {
             if (letraDigitada === palavraChave[i]) {
                 letraSegredo[i].innerHTML = letraDigitada;
