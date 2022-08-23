@@ -112,16 +112,20 @@ li {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
-    border-bottom: 1px solid black;
+    border-bottom: 4px solid var(--dark-blue);
     margin: 2px 0;
     width: 27px;
     justify-content: space-around;
+    color: var(--dark-blue);
+    text-transform: uppercase;
+    font-size: 30px;
+    overflow: hidden;
 }
 
 .msgErro {
     display: inline-block;
     text-align: center;
-    margin-top: 24px;
+    margin-bottom: 24px;
     margin-left: 5px;
 }
 
@@ -129,4 +133,24 @@ li {
     height: auto;
     width: 294px;
 }
+
+.jogo {
+    text-align: center;
+}
 /***********************************************/
+
+
+@media screen and (max-width: 600px) {
+    .main-jogo {
+        align-items: center;
+    }
+
+    ul {
+        width: auto;
+        height: 40px;
+    }
+
+    .botoes-jogo {
+        flex-direction: column;
+    }
+}
