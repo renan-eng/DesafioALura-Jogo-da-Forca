@@ -8,10 +8,9 @@ let caminhoImg = ["segundo_erro.png", "terceiro_erro.png", "quarto_erro.png", "q
 let letraSegredo = document.getElementsByClassName('letra-li');
 const regex = /^[a-záàâãéèêíïóôõöúçñ ]+$/i;
 let letraDigitada = "";
+let salvaLetraDigitada = [];
 let ganhou = true;
 let errou = 0;
-
-
 
 // Função executada ao carregar a página
 window.addEventListener("load", carregaPagina);
@@ -22,12 +21,10 @@ function carregaPagina() {
     console.log('oi') //primeiro comando a ser carregado ao carregar a pagina.
     /*Testando*/
     criarLista();
-
 }
 
 function criarLista() {
     for (letraAtual; letraAtual <= palavraChave.length; letraAtual++) {
-        //console.log(palavraChave[letraAtual])
         //Insere as letras
         palavra.appendChild(novaLetra("e"));
     }
@@ -43,7 +40,6 @@ function novaLetra(e) {
 
 
 function teclaPressionada(e) {
-    //let letraSegredo = document.getElementsByClassName('letra-li');
     let criaP = document.createElement('p');
 
     e.preventDefault();
@@ -71,46 +67,44 @@ function teclaPressionada(e) {
         } else letraDigitada = e.key;
     }
 
+    salvaLetraDigitada.push(letraDigitada);
+
     //while (ganhou) {
-    for (let i = 0; i <= palavraChave.length-1; i++) {
+    for (let i = 0; i <= palavraChave.length - 1; i++) {
         //console.log(letraSegredo[i].innerHTML);
         //x = letraSegredo[i].innerHTML
 
         if (letraSegredo[i].innerHTML === '') {
             if (letraDigitada === palavraChave[i]) {
                 letraSegredo[i].innerHTML = letraDigitada;
-            } else if (letraDigitada !== palavraChave[i]) {
-                errou++;
-                console.log(`Errou = ${errou}`);
-                criaP.innerHTML = letraDigitada;
-                criaP.className = 'msgErro';
-                jogo.appendChild(criaP);
-                switch (errou) {
-                    case 8:
-                        imagem.src = caminhoImg[0];
-                        break;
-                    case 16:
-                        imagem.src = caminhoImg[1];
-                        break;
-                    case 24:
-                        imagem.src = caminhoImg[2];
-                        break;
-                    case 32:
-                        imagem.src = caminhoImg[3];
-                        break;
-                    case 40:
-                        imagem.src = caminhoImg[4];
-                        break;
-                }
             }
         }
-
-
-
     }
 
-    //}
+    let j = palavraChave.indexOf(letraDigitada);
+    if (j === -1) {
+        errou++;
+        console.log(`Errou = ${errou}`);
+        criaP.innerHTML = letraDigitada;
+        criaP.className = 'msgErro';
+        jogo.appendChild(criaP);
+        switch (errou) {
+            case 1:
+                imagem.src = caminhoImg[0];
+                break;
+            case 2:
+                imagem.src = caminhoImg[1];
+                break;
+            case 3:
+                imagem.src = caminhoImg[2];
+                break;
+            case 4:
+                imagem.src = caminhoImg[3];
+                break;
+            case 5:
+                imagem.src = caminhoImg[4];
+                break;
+        }
+    }
     console.log(`e.key = ${e.key}`); // letraDigitada resultados: Letra ou Dead (se for acento) ou invalido (se numero ou teclas modificadoras
-    //console.log(letraSegredo[1].innerHTML);
-
 }
