@@ -20,13 +20,14 @@ window.addEventListener("keyup", teclaPressionada);
 
 function carregaPagina() {
     // Retorna uma palavra aleatória da API do dicionário aberto
-     fetch('https://api.dicionario-aberto.net/random')
-         .then(res=>res.json())
-         .then((data) => {
-             console.log(data.word)
-             palavraChave = data.word;
-             criarLista();
-         })
+    fetch('https://api.dicionario-aberto.net/random')
+        .then(res => res.json())
+        .then((data) => {
+            console.log(data.word)
+            palavraChave = data.word.normalize('NFD').replace(/[\u0300-\u036f]/g, ""); //remove os acentos
+            console.log(palavraChave);
+            criarLista();
+        })
 }
 
 function criarLista() {
