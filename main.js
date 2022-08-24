@@ -2,6 +2,7 @@ let letraAtual = 1;
 let palavraChave = "";
 let palavra = document.getElementById("palavra");
 let jogo = document.getElementById("jogo");
+let numTentativas = document.getElementById('tentativas-restantes');
 let p = document.getElementById('msgErro');
 let imagem = document.getElementById("img");
 let caminhoImg = ["segundo_erro.png", "terceiro_erro.png", "quarto_erro.png", "quinto_erro.png", "sexto_erro.png"];
@@ -9,7 +10,7 @@ let letraSegredo = document.getElementsByClassName('letra-li');
 const regex = /^[a-záàâãéèêíïóôõöúçñ]+$/i;
 let letraDigitada = "";
 let salvaLetraDigitada = [];
-let ganhou = true;
+let tentativas = 18;
 let errou = 0;
 
 // Função executada ao carregar a página
@@ -46,7 +47,7 @@ function novaLetra(e) {
 function teclaPressionada(e) {
     let criaP = document.createElement('p');
 
-    //e.preventDefault();
+    numTentativas.innerHTML = `Tentativas: ${tentativas.toString()}`;
 
     // if (regex.test(e.key)) {
     //     // Verifica se a tecla pressionada não é tecla especial
@@ -84,6 +85,7 @@ function teclaPressionada(e) {
     let j = palavraChave.indexOf(letraDigitada);
     if (j === -1) {
         errou++;
+        tentativas--;
         console.log(`Errou = ${errou}`);
         criaP.innerHTML = letraDigitada;
         criaP.className = 'msgErro';
