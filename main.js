@@ -5,7 +5,7 @@ let jogo = document.getElementById("jogo");
 let numTentativas = document.getElementById('tentativas-restantes');
 let p = document.getElementById('msgErro');
 let imagem = document.getElementById("img");
-let caminhoImg = ["segundo_erro.png", "terceiro_erro.png", "quarto_erro.png", "quinto_erro.png", "sexto_erro.png"];
+let caminhoImg = ["primeiro_erro.png", "segundo_erro.png", "terceiro_erro.png", "quarto_erro.png", "quinto_erro.png", "sexto_erro.png"];
 let letraSegredo = document.getElementsByClassName('letra-li');
 const regex = /^[a-záàâãéèêíïóôõöúçñ]+$/i;
 let letraDigitada = "";
@@ -91,22 +91,34 @@ function teclaPressionada(e) {
         criaP.className = 'msgErro';
         jogo.appendChild(criaP);
         switch (errou) {
-            case 1:
+            case 3:
                 imagem.src = caminhoImg[0];
                 break;
-            case 2:
+            case 6:
                 imagem.src = caminhoImg[1];
                 break;
-            case 3:
+            case 9:
                 imagem.src = caminhoImg[2];
                 break;
-            case 4:
+            case 12:
                 imagem.src = caminhoImg[3];
                 break;
-            case 5:
+            case 15:
                 imagem.src = caminhoImg[4];
                 break;
+            case 19:
+                imagem.src = caminhoImg[5];
+                perdeuJogo();
+                window.removeEventListener("keyup", teclaPressionada);
+                break;
+
         }
     }
-    console.log(`e.key = ${e.key}`); // letraDigitada resultados: Letra ou Dead (se for acento) ou invalido (se numero ou teclas modificadoras
+    console.log(`e.key = ${e.keyCode}`); // letraDigitada resultados: Letra ou Dead (se for acento) ou invalido (se numero ou teclas modificadoras
+}
+
+function perdeuJogo() {
+    for (let i = 0; i <= palavraChave.length - 1; i++) {
+            letraSegredo[i].innerHTML = palavraChave[i];
+    }
 }
